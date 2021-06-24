@@ -11,5 +11,8 @@
     "url": "santiago7r"
   },
   "author": "Eddy Rhenals",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
