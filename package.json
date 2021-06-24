@@ -1,0 +1,15 @@
+{
+  "name": "project-dalilah-resto",
+  "version": "1.0.0",
+  "description": "Third project in Acamica",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "santiago7r"
+  },
+  "author": "Eddy Rhenals",
+  "license": "ISC"
+}
