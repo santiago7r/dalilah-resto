@@ -8,11 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "santiago7r"
+    "url": "https://github.com/santiago7r/dalilah-resto"
   },
   "author": "Eddy Rhenals",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mariadb": "^2.5.4",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.9",
+    "sequelize": "^6.6.4"
   }
 }
