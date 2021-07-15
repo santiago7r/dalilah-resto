@@ -4,8 +4,6 @@ const routes = require('./routes');
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize('mysql://root:root@localhost:3306/delilah');
 
-
-
 const app = express();
 const port = 8080;
 
