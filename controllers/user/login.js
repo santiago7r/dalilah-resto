@@ -1,10 +1,12 @@
 
+require('dotenv').config()
 const { json } = require('sequelize');
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize('mysql://root:root@localhost:3306/delilah');
 const jwt = require('jsonwebtoken');
-const SECRET = 'd3l1l4h'; //Usar dotenv para generar valor del secret 
-const EXPIRE = '1h';
+const SECRET = process.env.ACCESS_TOKEN_SECRET; 
+const EXPIRE = process.env.EXPIRE; 
+console.log("Soy Yo", SECRET, EXPIRE);
 
 const login = async (req, res) => { 
     const {e_mail, contrasenia} = req.body;
@@ -20,7 +22,8 @@ const login = async (req, res) => {
                 type: sequelize.QueryTypes.SELECT,
             },
         );
-        console.log(resp);
+        console.log(resp); 
+        console.log(SECRET); 
 
         resp = resp[0]; 
 
@@ -29,9 +32,7 @@ const login = async (req, res) => {
             return res.status(201).json({msg: 'Logged successfully', token: token});
         }
         return res.status(404).json({msg: 'Usuario no encontrado'});
-        
 
-        
     } catch (error) {
         res.status(400).json({msg: 'Ha ocurrido un error con correo y/o contraseña', error: { message: error.message, stack: error.stack } }); 
     }
