@@ -5,8 +5,7 @@ const Sequelize = require('sequelize');
 const sequelize = new Sequelize('mysql://root:root@localhost:3306/delilah');
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.ACCESS_TOKEN_SECRET; 
-const EXPIRE = process.env.EXPIRE; 
-console.log("Soy Yo", SECRET, EXPIRE);
+const EXPIRE = process.env.EXPIRE;
 
 const login = async (req, res) => { 
     const {e_mail, contrasenia} = req.body;
@@ -23,7 +22,6 @@ const login = async (req, res) => {
             },
         );
         console.log(resp); 
-        console.log(SECRET); 
 
         resp = resp[0]; 
 
