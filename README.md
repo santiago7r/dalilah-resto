@@ -20,7 +20,7 @@ Dentro del panel de control de la base de datos creada importar el archivo /db/d
 4 - Iniciando el servidor
 Crear un archivo .env en el repositorio local y declararle las siguientes variables.
 
-ACCESS_TOKEN_SECRET=fa5e467516420b47c83f72ac17a8ac737ef4eb812065de3fcb3c9c4112174528bc8d66177bf9d423b3744fc6789dd9c484e825e93bc8a2c314927ded807d08f6
+ACCESS_TOKEN_SECRET=
 
 En la consola correr el comando nodemon app.js
 
