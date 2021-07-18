@@ -1,0 +1,603 @@
+
+openapi: 3.0.1
+info:
+  title: Delilah Restó
+  description: 'Delilah Restó Project.'
+  contact:
+    email: eddy.rhenals7@gmail.com
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+tags:
+- name: user
+  description: User's register and login
+- name: product
+  description: Create a new and access to DB products
+- name: order
+  description: Create a new and access to DB orders
+- name: order product
+  description: Filter relation of products and orders
+paths:
+  /create:
+    post:
+      tags:
+      - user
+      summary: Register new users
+      description: Everybody can do this
+      requestBody:
+        description: Info to register users
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        201:
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SuccessCreated'
+        400:
+          description: error
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/ErrorCreated' 
+                  
+  /login:
+    post:
+      tags:
+      - user
+      summary: Login users
+      description: Only resgistered user can do this
+      requestBody:
+        description: Info to login users
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/login'
+        required: true
+      responses:
+        201:
+          description: User logged successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Successlogged'
+        400:
+          description: error
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Errorlogin'
+        404:
+          description: error
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Notfound'
+                  
+
+  /product:
+    post:
+      tags:
+      - product
+      summary: create a new products
+      description: Only admin can do this
+      requestBody:
+        description: info to post new product
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostNewProduct'
+        required: true
+      responses:
+        201:
+          description: Product added successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SuccessAdded'
+        500:
+          description: error
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Error500'
+                  
+                  
+    get:
+      tags:
+      - product
+      summary: Bring DB products
+      description: Only admin can do this
+      requestBody:
+        description: info to get products
+        content:
+          application/json:
+            schema:
+              type: string
+              example: ''
+        required: true
+      responses:
+        201:
+          description: successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PostNewProduct'
+        500:
+          description: error
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Error500'
+                  
+    put:
+      tags:
+      - product
+      summary: update DB products
+      description: Only admin can do this
+      requestBody:
+        description: info to post new product
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutProduct'
+        required: true
+      responses:
+        201:
+          description: successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PostNewProduct'
+        500:
+          description: error
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Error500'
+                  
+                  
+    delete:
+      tags:
+      - product
+      summary: delete products
+      description: Only admin can do this
+      requestBody:
+        description: info to post new product
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteProduct'
+        required: true
+      responses:
+        201:
+          description: successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Status201'
+        500:
+          description: error
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Error500'
+                  
+                  
+  /order:
+    post:
+      tags:
+      - order
+      summary: create a new order
+      description: everybody can do this
+      requestBody:
+        description: info to post new order
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostNewOrder'
+        required: true
+      responses:
+        201:
+          description: successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Status201'
+        500:
+          description: error
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Error500'
+                  
+    get:
+      tags:
+      - order
+      summary: get orders
+      description: Only admin can do this
+      requestBody:
+        description: info to post new product
+        content:
+          application/json:
+            schema:
+              type: string
+              example: ''
+        required: true
+      responses:
+        201:
+          description: successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Status201'
+        500:
+          description: error
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Error500'
+
+                  
+    put:
+      tags:
+      - order
+      summary: update order
+      description: Only admin can do this
+      requestBody:
+        description: info to post new product
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutOrder'
+        required: true
+      responses:
+        201:
+          description: successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Status201'
+        500:
+          description: error
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Error500'
+                  
+                  
+    delete:
+      tags:
+      - order
+      summary: delete orders
+      description: Only admin can do this
+      requestBody:
+        description: info to post new product
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostNewProduct'
+        required: true
+      responses:
+        201:
+          description: successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Status201'
+        500:
+          description: error
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Error500'
+                  
+  /order-product:
+    post:
+      tags:
+      - order product
+      summary: create a new order
+      description: everybody can do this
+      requestBody:
+        description: info to post new order
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderProduct'
+        required: true
+      responses:
+        201:
+          description: successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Status201'
+        500:
+          description: error
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Error500'
+                  
+    get:
+      tags:
+      - order product
+      summary: create a new order
+      description: everybody can do this
+      requestBody:
+        description: info to post new order
+        content:
+          application/json:
+            schema:
+              type: string
+              example: ''
+        required: true
+      responses:
+        201:
+          description: successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Status201'
+        500:
+          description: error
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Error500'
+  
+          
+
+
+
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        nombre_de_usuario:
+          type: string
+          example: 'santiagopower'
+        nombre:
+          type: string
+          example: 'Eddy'
+        apellido:
+          type: string
+          example: 'Rhenals'
+        e_mail:
+          type: string
+          example: 'eddy@gmail.com'
+        celular:
+          type: string
+          example: '+57-300-4349897'
+        direccion:
+          type: string
+          example: 'Avenida siempre viva'
+        contrasenia:
+          type: string
+        estado:
+          type: integer
+          default: 1
+      xml:
+        name: User
+        
+    login:
+      type: object
+      properties:
+        e_mail:
+          type: string
+          example: 'eddy@gmail.com'
+        contrasenia:
+          type: string
+      xml:
+        name: User
+        
+    SuccessCreated:
+      type: object
+      properties: 
+        msg:
+          type: string
+          example: 'User created successfully'
+        body: 
+          type: array
+          example: [5, 1]
+      xml:
+        name: User
+        
+    ErrorCreated:
+      type: object
+      properties: 
+        msg:
+          type: string
+          example: 'Ha ocurrido un error con la contraseña'
+      xml:
+        name: User
+        
+    Successlogged:
+      type: object
+      properties: 
+        msg:
+          type: string
+          example: 'Logged successfully'
+        token: 
+          type: string
+          example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlX21haWwiOiJlZGR5QHlhaG9vLmNvbSIsImlkX3JvbGVzIjoxLCJpYXQiOjE2MjY2MzA5MDksImV4cCI6MTYyNjYzNDUwOX0.HdFW9L3fxXQudikPnhjvh10TTzqpewjlmanFFChmTSM'
+      xml:
+        name: User
+        
+    Errorlogin:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: 'Ha ocurrido un error con correo y/o contraseña'
+      xml:
+        name: User
+        
+    Notfound:
+      type: object
+      properties:
+        msg:
+          type: string
+          example: 'Usuario no encontrado'
+      xml:
+        name: User
+          
+    PostNewProduct:
+      type: object
+      properties:
+        producto:
+          type: string
+          example: 'Picada Mixta'
+        precio:
+          type: integer
+          example: 15000
+      xml:
+        name: User
+        
+    SuccessAdded:
+      type: object
+      properties: 
+        msg:
+          type: string
+          example: 'Product added successfully'
+        body: 
+          type: array
+          example: [45, 1]
+      xml:
+        name: User
+        
+    Error500:
+      type: object
+      properties: 
+        msg:
+          type: string
+          example: 'Error'
+      xml:
+        name: User
+        
+    Status201:
+      type: object
+      properties: 
+        msg:
+          type: string
+          example: 'Successful'
+      xml:
+        name: User
+        
+    PutProduct:
+      type: object
+      properties:
+        id_productos:
+          type: integer
+          example: 29
+        producto:
+          type: string
+          example: 'Picada Mixta'
+        precio:
+          type: integer
+          example: 15000
+      xml:
+        name: User
+        
+    DeleteProduct:
+      type: object
+      properties:
+        id_productos:
+          type: integer
+          example: 29
+      xml:
+        name: User
+        
+    PostNewOrder:
+      type: object
+      properties:
+        id_usuarios:
+          type: integer
+          example: 29
+        id_pagos:
+          type: integer
+          example: 1
+      xml:
+        name: User
+        
+    PutOrder:
+      type: object
+      properties:
+        estado_de_order:
+          type: integer
+          example: 29
+        id_order:
+          type: integer
+          example: 1
+      xml:
+        name: User
+        
+    OrderProduct:
+      type: object
+      properties:
+        id_ordenes:
+          type: integer
+          example: 29
+        id_productos:
+          type: integer
+          example: 1
+      xml:
+        name: User
+      
+
