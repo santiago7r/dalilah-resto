@@ -8,9 +8,11 @@ const clientOrder = async (req, res) => {
     console.log(req.body);
     try {
         const clientOrder = await sequelize.query(
-            `SELECT id_ordenes
-            FROM delilah.ordenes
-            WHERE id_usuarios=id_usuarios ;`, {
+            `SELECT id_ordenes FROM ordenes 
+            INNER JOIN usuarios ON ordenes.id_usuarios=usuarios.id_usuarios 
+            WHERE usuarios.id_usuarios=:id_usuarios;`, 
+            {
+                replacements: {id_usuarios: id_usuarios},
                 type: sequelize.QueryTypes.SELECT,
             }
         );
