@@ -37,10 +37,19 @@ create table productos(
 	foreign key(id_productos) references ordenes(id_productos)
 );
 
+insert into productos(producto, precio)
+	values ('Perro suizo', 15000),
+		   ('Salchi papas', 14500);
+		  
+
 create table roles(
 	id_roles int primary key auto_increment,
 	rol_de_usuario varchar(256)
 );
+
+insert into roles(id_roles, rol_de_usuario)
+	values (1, 'admin'),
+		   (2,'client');
 
 
 create table pagos(

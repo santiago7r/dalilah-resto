@@ -16,8 +16,7 @@ const clientOrder = async (req, res) => {
                 type: sequelize.QueryTypes.SELECT,
             }
         );
-        res.status(201).json({msg: 'This are all the orders', body: clientOrder});
-        
+        res.status(201).json({msg: 'This are all the client orders', body: clientOrder});     
     } catch (error) {
         res.status(500).json({msg: 'Error', error: { message: error.message, stack: error.stack }}); 
     }    

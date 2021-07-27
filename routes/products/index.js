@@ -9,7 +9,7 @@ const deleteProduct = require('../../controllers/products/delete-product');
 
 
 router.post('/product', middleware.validarTokenAdmin, createProduct.createProduct);
-router.get('/product',  middleware.validarTokenAdmin, getProduts.getProduts);
+router.get('/product', getProduts.getProduts);
 router.put('/product',  middleware.validarTokenAdmin, updateProducts.updateProducts);
 router.delete('/product', middleware.validarTokenAdmin, deleteProduct.deleteProduct);
 

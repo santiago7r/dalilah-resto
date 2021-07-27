@@ -2,7 +2,7 @@
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize('mysql://root:root@localhost:3306/delilah');
 
-const createUser = async (req, res) => { 
+const createAdmin = async (req, res) => { 
     const {nombre_de_usuario, nombre, apellido, e_mail, celular, direccion, contrasenia, estado} = req.body;
     console.log(req.body);
 
@@ -29,5 +29,5 @@ const createUser = async (req, res) => {
 
 module.exports = 
 {
-    createUser
+    createAdmin
 };

@@ -29,3 +29,15 @@ En la consola correr el comando nodemon app.js
 Testear los endpoints provistos desde postman para poder hacer uso de la API y base de datos generadas
 
 Documentación de la API
+
+
+_________________________________________________________________________________________________________________________________________
+_________________________________________________________________________________________________________________________________________
+
+Nota: Al hacer login un client se genera un token pero este no tienen autorización para tareas de administrador, cuando se loguea un admin 
+      se genera un token que sí tinene permisos para hacer actividades establecidas para un administrador. A futuro cada token podría ser
+      usado para features adicionales.
+
+      Cualquira puede ver los productos disponibles a través de el "get" de productos.
+
+      
